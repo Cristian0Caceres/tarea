@@ -5,7 +5,7 @@ class Matriz:
         self.filas = filas                                 # Un entero que indica el número de filas en la matriz
         self.columnas = columnas                           # Un entero que indica el número de columnas en la matriz.
         self.aleatorio = aleatoria                         # Un valor booleano que, si es verdadero, inicializa la matriz con valores aleatorios entre 0 y 9
-        self.elementos = []                         # Una lista de listas que contiene los elementos de la matriz.
+        self.elementos = []                                # Una lista de listas que contiene los elementos de la matriz.
     
     def imprimir(self) :
         matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
@@ -14,37 +14,77 @@ class Matriz:
             for y in range(self.columnas):
                 if self.aleatorio == False:
                     matriz[x][y] = 0
+                    self.elementos.append(matriz[x][y])
                 else:
                     matriz[x][y] = rd.randrange(10)
+                    self.elementos.append(matriz[x][y])
                 i += 1         
         vector = np.array(matriz)
-        print(vector)    
+        print(vector)  
+
     def sumar(self, otra):
-        pass
+        matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        matriz2 = [[ __ for __ in range(otra.columnas)] for __ in range(otra.filas)] 
+        resultado = None
+        i = 0  
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                if self.aleatorio == otra.alealeatorio == False:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = 0
+                else:
+                    matriz[x][y] = self.elementos[i] + otra[x][y]
+
+                if self.aleatorio == otra.alealeatorio == False:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = 0
+                else:
+                i += 1         
+        vector = np.array(matriz)
+        print(vector) 
+
     def restar(self, otra):
-        pass
+        matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        i = 0  
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                if self.aleatorio == False:
+                    matriz[x][y] = otra
+                else:
+                    matriz[x][y] = self.elementos[i] - otra
+                i += 1         
+        vector = np.array(matriz)
+        print(vector)
+
     def multiplicar(self, otra):
-        pass
+        matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        i = 0  
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                if self.aleatorio == False:
+                    matriz[x][y] = otra
+                else:
+                    matriz[x][y] = self.elementos[i] * otra
+                i += 1         
+        vector = np.array(matriz)
+        print(vector)
 
-# import random
-# if __name__ == "__main__":
-#     random.seed(7)
-#     matriz1 = Matriz(5, 5, True)
-#     random.seed(8)
-#     matriz2 = Matriz(5, 5, True)
-#     print("Matriz 1:")
-#     matriz1.imprimir()
-#     print("Matriz 2:")
-#     matriz2.imprimir()
-#     suma = matriz1.sumar(matriz2)
-#     print("Resultado de la suma:")
-#     suma.imprimir()
-#     resta = matriz1.restar(matriz2)
-#     print("Resultado de la resta:")
-#     resta.imprimir()
-#     multiplicacion = matriz1.multiplicar(matriz2)
-#     print("Resultado de la multiplicación:")
-#     multiplicacion.imprimir()
-
-matriz = Matriz(3,4,True)
-print(matriz.imprimir())
+import random
+if __name__ == "__main__":
+    random.seed(7)
+    matriz1 = Matriz(5, 5, True)
+    random.seed(8)
+    matriz2 = Matriz(5, 5, True)
+    print("Matriz 1:")
+    matriz1.imprimir()
+    print("Matriz 2:")
+    matriz2.imprimir()
+    suma = matriz1.sumar(matriz2)
+    print("Resultado de la suma:")
+    suma.imprimir()
+    resta = matriz1.restar(matriz2)
+    print("Resultado de la resta:")
+    resta.imprimir()
+    multiplicacion = matriz1.multiplicar(matriz2)
+    print("Resultado de la multiplicación:")
+    multiplicacion.imprimir()
