@@ -25,49 +25,78 @@ class Matriz:
     def sumar(self, otra):
         matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
         matriz2 = [[ __ for __ in range(otra.columnas)] for __ in range(otra.filas)] 
-        resultado = None
         i = 0  
         for x in range(self.filas):
             for y in range(self.columnas):
-                if self.aleatorio == otra.alealeatorio == False:
+                if self.aleatorio == False and otra.aleatorio == False:
                     matriz[x][y] = 0
                     matriz2[x][y] = 0
-                else:
-                    matriz[x][y] = self.elementos[i] + otra[x][y]
 
-                if self.aleatorio == otra.alealeatorio == False:
+                elif self.aleatorio == False and otra.aleatorio == True:
                     matriz[x][y] = 0
+                    matriz2[x][y] = otra.elementos[i]
+
+                elif self.aleatorio == True and otra.aleatorio == False:
+                    matriz[x][y] = self.elementos[i]
                     matriz2[x][y] = 0
-                else:
-                i += 1         
+                elif self.aleatorio == True and otra.aleatorio == True:
+                    matriz[x][y] = self.elementos[i]
+                    matriz2[x][y] = otra.elementos[i]
+                i += 1
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                matriz[x][y] += matriz2[x][y]
         vector = np.array(matriz)
         print(vector) 
 
     def restar(self, otra):
         matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        matriz2 = [[ __ for __ in range(otra.columnas)] for __ in range(otra.filas)] 
         i = 0  
         for x in range(self.filas):
             for y in range(self.columnas):
-                if self.aleatorio == False:
-                    matriz[x][y] = otra
-                else:
-                    matriz[x][y] = self.elementos[i] - otra
-                i += 1         
-        vector = np.array(matriz)
-        print(vector)
+                if self.aleatorio == False and otra.aleatorio == False:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = 0
 
+                elif self.aleatorio == False and otra.aleatorio == True:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = otra.elementos[i]
+
+                elif self.aleatorio == True and otra.aleatorio == False:
+                    matriz[x][y] = self.elementos[i]
+                    matriz2[x][y] = 0
+                elif self.aleatorio == True and otra.aleatorio == True:
+                    matriz[x][y] = self.elementos[i]
+                    matriz2[x][y] = otra.elementos[i]
+                i += 1
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                matriz[x][y] -= matriz2[x][y]
     def multiplicar(self, otra):
         matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        matriz2 = [[ __ for __ in range(otra.columnas)] for __ in range(otra.filas)] 
         i = 0  
         for x in range(self.filas):
             for y in range(self.columnas):
-                if self.aleatorio == False:
-                    matriz[x][y] = otra
-                else:
-                    matriz[x][y] = self.elementos[i] * otra
-                i += 1         
-        vector = np.array(matriz)
-        print(vector)
+                if self.aleatorio == False and otra.aleatorio == False:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = 0
+
+                elif self.aleatorio == False and otra.aleatorio == True:
+                    matriz[x][y] = 0
+                    matriz2[x][y] = otra.elementos[i]
+
+                elif self.aleatorio == True and otra.aleatorio == False:
+                    matriz[x][y] = self.elementos[i]
+                    matriz2[x][y] = 0
+                elif self.aleatorio == True and otra.aleatorio == True:
+                    matriz[x][y] = self.elementos[i]
+                    matriz2[x][y] = otra.elementos[i]
+                i += 1
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                matriz[x][y] *= matriz2[x][y]
 
 import random
 if __name__ == "__main__":
