@@ -1,20 +1,24 @@
-
+import numpy as np
+import random as rd 
 class Matriz:
-    def __init__(self,filas,columnas,aleatorio,elementos):
+    def __init__(self, filas, columnas, aleatoria=False):
         self.filas = filas                                 # Un entero que indica el número de filas en la matriz
         self.columnas = columnas                           # Un entero que indica el número de columnas en la matriz.
-        self.aleatorio = aleatorio                         # Un valor booleano que, si es verdadero, inicializa la matriz con valores aleatorios entre 0 y 9
-        self.elementos = elementos                         # Una lista de listas que contiene los elementos de la matriz.
+        self.aleatorio = aleatoria                         # Un valor booleano que, si es verdadero, inicializa la matriz con valores aleatorios entre 0 y 9
+        self.elementos = []                         # Una lista de listas que contiene los elementos de la matriz.
     
     def imprimir(self) :
-        matriz = [[ __ for __ in range(self.filas)] for __ in range(self.columnas)]
-
-        for x in range(self.columnas):
-            for y in range(self.filas):
-                matriz[x][y] = self.elemento[y * x]
-                
-
-
+        matriz = [[ __ for __ in range(self.columnas)] for __ in range(self.filas)] 
+        i = 0  
+        for x in range(self.filas):
+            for y in range(self.columnas):
+                if self.aleatorio == False:
+                    matriz[x][y] = 0
+                else:
+                    matriz[x][y] = rd.randrange(10)
+                i += 1         
+        vector = np.array(matriz)
+        print(vector)    
     def sumar(self, otra):
         pass
     def restar(self, otra):
@@ -42,5 +46,5 @@ class Matriz:
 #     print("Resultado de la multiplicación:")
 #     multiplicacion.imprimir()
 
-matriz = [[ __ for __ in range(fila)] for __ in range(columana)]
-print(matriz)
+matriz = Matriz(3,4,True)
+print(matriz.imprimir())
