@@ -24,10 +24,10 @@ class SistemaDeReservas:
         return "True"
     def asientos_disponibles(self):
         disp=0
-        for x in range(0, self.columnas):
-            for y in range(0,self.filas):
+        for x in range(0, self.filas -1):
+            for y in range(0,self.columnas -1):
                 if cine.matriz[x][y]=="dis":
-                    disp=disp+1
+                    dis += 1
 
         return disp
 if __name__ == "__main__":
